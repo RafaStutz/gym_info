@@ -31,7 +31,4 @@ def print_entropy_report(rep: EntropyReport) -> None:
     header = "  episode   H(S)        H(A)        H(A | S)"
     print(header)
     for idx, ent in enumerate(rep.episode_entropies):
-        print(
-            f"  {idx:7d}   "
-            f"{ent.H_S:10.6f} {ent.H_A:10.6f} {ent.H_A_given_S:10.6f}"
-        )
+        print(f"  {idx:7d}   {ent.H_S:10.6f} {ent.H_A:10.6f} {ent.H_A_given_S:10.6f}")

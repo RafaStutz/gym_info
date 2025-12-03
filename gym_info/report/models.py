@@ -5,6 +5,7 @@ from dataclasses import dataclass
 import gymnasium as gym
 
 from ..api import Entropies, Summary, entropies, entropies_per_episode, summary
+from .style import render_entropy_report_html
 
 
 @dataclass(frozen=True)
@@ -23,6 +24,32 @@ class EntropyReport:
     num_episodes: int
     global_entropies: Entropies
     episode_entropies: list[Entropies]
+
+    def as_html(
+        self,
+        include: tuple[str, ...] = ("H_S", "H_A", "H_A_given_S"),
+    ) -> str:
+        """
+        Render this report as an HTML string with inline CSS.
+
+        Parameters
+        ----------
+        include:
+            Tuple of entropy keys to display. Valid entries are "H_S",
+            "H_A", and "H_A_given_S". The same selection is applied to
+            the global and per-episode tables.
+        """
+        return render_entropy_report_html(self, include=include)
+
+    def _repr_html_(self) -> str:
+        """
+        Rich HTML representation hook for IPython and Jupyter.
+
+        This method allows an EntropyReport instance to be displayed
+        directly in notebook environments, without explicitly calling
+        any rendering helper. All entropy metrics are shown.
+        """
+        return render_entropy_report_html(self)
 
 
 def build_entropy_report(env: gym.Env) -> EntropyReport:
