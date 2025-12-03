@@ -1,11 +1,11 @@
-from __future__ import annotations
-
 from .api import (
     Entropies,
     Summary,
     attach,
     entropies,
     entropies_per_episode,
+    episode_entropy_series,
+    episode_entropy_dataframe,
     plot_entropies,
     print_table,
     summary,
@@ -21,6 +21,8 @@ from .report import (
 __all__ = [
     "attach",
     "entropies",
+    "episode_entropy_series",
+    "episode_entropy_dataframe",
     "entropies_per_episode",
     "summary",
     "print_table",
