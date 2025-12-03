@@ -21,8 +21,8 @@ class HistogramEntropies:
     All values are measured in bits by default (log base 2).
     """
 
-    H_S: float          # state entropy H(S)
-    H_A: float          # action entropy H(A)
+    H_S: float  # state entropy H(S)
+    H_A: float  # action entropy H(A)
     H_A_given_S: float  # conditional action entropy H(A | S)
 
 
@@ -224,11 +224,12 @@ def episode_histogram_entropies(
     log_base: float = _DEFAULT_LOG_BASE,
 ) -> list[HistogramEntropies]:
     """
-    Compute histogram-based entropies separately for each episode.
+    Compute histogram-based entropies separately for each completed episode.
 
-    The returned list has length equal to trajectory.num_episodes. The
-    e-th entry corresponds to the e-th episode defined by
-    episode_start_indices[e] and episode_end_indices[e].
+    The returned list has length equal to the number of completed
+    episodes. An episode is considered completed if it has both a start
+    and an end index. Any currently running episode (started but not yet
+    terminated) is ignored.
     """
     if trajectory.num_episodes == 0:
         return []
@@ -236,16 +237,18 @@ def episode_histogram_entropies(
     starts = trajectory.episode_start_indices
     ends = trajectory.episode_end_indices
 
-    if len(starts) != len(ends):
-        msg = (
-            "episode_start_indices and episode_end_indices must "
-            "have the same length."
-        )
-        raise ValueError(msg)
+    n_pairs = min(len(starts), len(ends), trajectory.num_episodes)
+    if n_pairs == 0:
+        return []
 
     results: list[HistogramEntropies] = []
 
-    for start, end in zip(starts, ends):
+    for e in range(n_pairs):
+        start = starts[e]
+        end = ends[e]
+        if start >= end:
+            continue
+
         sub_traj = slice_trajectory(trajectory, start, end)
         ent = histogram_entropies(sub_traj, log_base=log_base)
         results.append(ent)
