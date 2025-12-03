@@ -45,7 +45,7 @@ def _default_bins_for_box(
     The preset and env_id parameters are accepted to keep the interface
     open for future environment-specific or preset-specific tuning.
     """
-    _ = space  
+    _ = space
     _ = preset
     _ = env_id
     return _DEFAULT_BINS_PER_DIMENSION

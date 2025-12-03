@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable
 
-import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 from numpy.typing import NDArray
@@ -13,10 +12,11 @@ ObsArray = NDArray[np.float32]
 IndexArray = NDArray[np.int32]
 
 # constants
-_VECTOR_NDIM = 1          # expected ndim for 1D arrays (lower/upper)
-_MATRIX_NDIM = 2          # expected ndim for batched observations (T, d)
+_VECTOR_NDIM = 1  # expected ndim for 1D arrays (lower/upper)
+_MATRIX_NDIM = 2  # expected ndim for batched observations (T, d)
 _SINGLE_SAMPLE_BATCH = 1  # batch size when reshaping a single sample (d,) -> (1, d)
 _ZERO_SPAN_REPLACEMENT = 1.0  # span used for degenerate dimensions (upper == lower)
+
 
 @dataclass(frozen=True)
 class BoxBinningConfig:
@@ -112,8 +112,9 @@ def make_box_binning_from_space(
     ndim = flat_low.shape[0]
     bins_tuple = _normalize_bins_argument(n_bins, ndim)
 
-    return BoxBinningConfig(lower=flat_low, upper=flat_high, n_bins=bins_tuple, clip=clip)
-
+    return BoxBinningConfig(
+        lower=flat_low, upper=flat_high, n_bins=bins_tuple, clip=clip
+    )
 
 
 def discretize_box(
@@ -146,7 +147,9 @@ def discretize_box(
     if obs_array.ndim == _VECTOR_NDIM:
         obs_array = obs_array.reshape(_SINGLE_SAMPLE_BATCH, -1)
     if obs_array.ndim != _MATRIX_NDIM:
-        msg = f"observations must have shape (T, d) or (d,), got shape {obs_array.shape}"
+        msg = (
+            f"observations must have shape (T, d) or (d,), got shape {obs_array.shape}"
+        )
         raise ValueError(msg)
     if obs_array.shape[1] != config.ndim:
         msg = f"Dimensionality mismatch: observations have d={obs_array.shape[1]}, config.ndim={config.ndim}"
