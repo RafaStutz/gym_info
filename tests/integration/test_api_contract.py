@@ -30,4 +30,4 @@ def test_api_contract_cartpole() -> None:
     assert summ.num_episodes >= 0
 
     gym_info.print_table(summ)
-    gym_info.plot_entropies(summ)
+    gym_info.plot_entropies(env)

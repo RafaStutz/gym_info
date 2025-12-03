@@ -20,7 +20,6 @@ def _make_trajectory(
     """
     Helper to build a minimal DiscreteTrajectory from 1D state/action id arrays.
 
-    state_ids, action_ids: shape (T,), inteiros.
     """
     if state_ids.shape != action_ids.shape:
         msg = f"state_ids and action_ids must have same shape, got {state_ids.shape} and {action_ids.shape}"
