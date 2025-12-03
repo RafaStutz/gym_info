@@ -298,7 +298,7 @@ wheels = [
 ]
 
 [[package]]
-name = "gym-info"
+name = "gym_info"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

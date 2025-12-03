@@ -1,17 +1,17 @@
-# gym-info
+# gym_info
 
 Information-theoretic diagnostics for Gymnasium environments.
 
-`gym-info` helps you inspect **state and action entropies** in RL environments with minimal changes to your existing Gymnasium code. You wrap an environment once, run your usual interaction loop, and then query global or per-episode entropy metrics, tables, and simple reports.
+`gym_info` helps you inspect **state and action entropies** in RL environments with minimal changes to your existing Gymnasium code. You wrap an environment once, run your usual interaction loop, and then query global or per-episode entropy metrics, tables, and simple reports.
 
 ---
 
 ## Installation
 
 ```bash
-pip install gym-info
+pip install gym_info
 # or, with uv:
-# uv add gym-info
+# uv add gym_info
 ```
 
 Requirements:
@@ -64,7 +64,7 @@ df = episode_entropy_dataframe(env)
 
 ## Discretization
 
-gym-info works by discretizing continuous observations and actions into bins and then computing histogram-based entropies.
+gym_info works by discretizing continuous observations and actions into bins and then computing histogram-based entropies.
 
 - A preset encapsulates reasonable default binning strategies for a family of environments.
 

@@ -1,5 +1,5 @@
 [project]
-name = "gym-info"
+name = "gym_info"
 version = "0.1.0"
 description = "Information-theoretic metrics for Gymnasium environments"
 readme = "README.md"

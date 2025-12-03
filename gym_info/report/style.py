@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 
 _CSS = """
-.gym-info-report {
+.gym_info-report {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -17,19 +17,19 @@ _CSS = """
   max-width: 720px;
 }
 
-.gym-info-report .report-header {
+.gym_info-report .report-header {
   border-bottom: 1px solid #ddd;
   padding-bottom: 8px;
   margin-bottom: 12px;
 }
 
-.gym-info-report .report-title {
+.gym_info-report .report-title {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 4px;
 }
 
-.gym-info-report .report-meta {
+.gym_info-report .report-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -37,59 +37,59 @@ _CSS = """
   color: #555;
 }
 
-.gym-info-report .report-meta .meta-label {
+.gym_info-report .report-meta .meta-label {
   font-weight: 600;
 }
 
-.gym-info-report .report-section {
+.gym_info-report .report-section {
   margin-top: 12px;
   margin-bottom: 12px;
 }
 
-.gym-info-report .section-title {
+.gym_info-report .section-title {
   font-weight: 600;
   margin-bottom: 4px;
 }
 
-.gym-info-report .entropy-table {
+.gym_info-report .entropy-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
 }
 
-.gym-info-report .entropy-table th,
-.gym-info-report .entropy-table td {
+.gym_info-report .entropy-table th,
+.gym_info-report .entropy-table td {
   border: 1px solid #ddd;
   padding: 4px 6px;
   text-align: right;
 }
 
-.gym-info-report .entropy-table th:first-child,
-.gym-info-report .entropy-table td:first-child {
+.gym_info-report .entropy-table th:first-child,
+.gym_info-report .entropy-table td:first-child {
   text-align: left;
 }
 
-.gym-info-report .entropy-table thead {
+.gym_info-report .entropy-table thead {
   background-color: #f5f5f5;
 }
 
-.gym-info-report .entropy-table tbody tr:nth-child(odd) {
+.gym_info-report .entropy-table tbody tr:nth-child(odd) {
   background-color: #fafafa;
 }
 
-.gym-info-report .entropy-table tbody tr:nth-child(even) {
+.gym_info-report .entropy-table tbody tr:nth-child(even) {
   background-color: #ffffff;
 }
 
-.gym-info-report .entropy-table .epi-index {
+.gym_info-report .entropy-table .epi-index {
   text-align: right;
 }
 
-.gym-info-report .entropy-table .epi-value {
+.gym_info-report .entropy-table .epi-value {
   text-align: right;
 }
 
-.gym-info-report .no-episodes {
+.gym_info-report .no-episodes {
   font-size: 13px;
   color: #666;
   margin-top: 4px;
@@ -204,7 +204,7 @@ def render_entropy_report_html(
 {_CSS}
 </style>
 
-<div class="gym-info-report">
+<div class="gym_info-report">
   <div class="report-header">
     <div class="report-title">gym_info entropy report</div>
     <div class="report-meta">
