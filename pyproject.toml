@@ -4,14 +4,24 @@ version = "0.1.0"
 description = "Information-theoretic metrics for Gymnasium environments"
 readme = "README.md"
 requires-python = ">=3.10"
+
 dependencies = [
   "gymnasium>=1.2.2",
+  "matplotlib>=3.10.7",
   "numpy>=1.24",
+  "pandas>=2.3.3",
+  "matplotlib>=3.10.7",
 ]
+
 
 [dependency-groups]
 dev = [
   "pytest>=8.0",
-  "ruff>=0.5",
+  "ruff>=0.14.6",
   "mypy>=1.10",
+  "pre-commit>=4.5.0",
 ]
+
+
+[tool.ruff]
+line-length = 88
